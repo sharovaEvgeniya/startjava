@@ -18,10 +18,10 @@ public class VariablesTheme {
                 " Совместимость с MS-Sound\n");
 
         System.out.println("2. Расчет стоимости товара со скидкой\n");
-        int pen = 100;
-        int book = 200;
+        int pricePen = 100;
+        int priceBook = 200;
         int discount = 11;
-        int sum = pen + book;
+        int sum = pricePen + priceBook;
         int discountSum = sum - sum / 100 * discount;
         System.out.println("Сумма скидки " + (sum - discountSum) + 
                 "\nОбщая стоимость товаров со скидкой " + discountSum);
