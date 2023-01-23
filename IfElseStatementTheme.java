@@ -57,6 +57,12 @@ public class IfElseStatementTheme {
             } else {
                 System.out.println(num3 + " не четное");
             }
+
+            if(num3 > 0) {
+                System.out.println(num3 + " положительное число");
+            } else {
+                System.out.println(num3 + " отрицательное число");
+            }
         }
 
         System.out.println("\n4. Поиск одинаковых цифр в числах\n");
@@ -91,11 +97,11 @@ public class IfElseStatementTheme {
 
         System.out.println("\n5. Определение символа по его коду\n");
         char symbol = '\u0057';
-        if(symbol >= (int)'A' && symbol <= (int)'Z') {
+        if(symbol >= 'A' && symbol <= 'Z') {
             System.out.println(symbol + " большая буква");
-        } else if(symbol >= (int)'a' && symbol <= (int)'z') {
+        } else if(symbol >= 'a' && symbol <= 'z') {
             System.out.println(symbol + " маленькая буква");
-        } else if(symbol >= (int)'0' && symbol <= (int)'9') {
+        } else if(symbol >= '0' && symbol <= '9') {
             System.out.println(symbol + " число");
         } else{
             System.out.println(symbol + " не буква и не число");
@@ -109,30 +115,22 @@ public class IfElseStatementTheme {
 
         if(depositSum < 100000) {
             interestRate = 5;
-            interestAccrued = depositSum / 100 * interestRate;
-            finalSum = depositSum + interestAccrued;
-        }
-
-        if(depositSum >= 100000 && depositSum < 300000) {
+        } else if(depositSum >= 100000 && depositSum < 300000) {
             interestRate = 7;
-            interestAccrued = depositSum / 100 * interestRate;
-            finalSum = depositSum + interestAccrued;
-        }
-
-        if (depositSum >= 300000) {
+        } else {
             interestRate = 10;
-            interestAccrued = depositSum / 100 * interestRate;
-            finalSum = depositSum + interestAccrued;
         }
 
+        interestAccrued = depositSum / 100 * interestRate;
+        finalSum = depositSum + interestAccrued;
         System.out.println(depositSum + " сумма вклада\n" + interestAccrued +
                  " начисленный %\n" + finalSum + " итоговая сумма с %\n");
 
         System.out.println("\n7. Определение оценки по предметам\n");
         int historyPercent = 59;
         int programmingPercent = 91;
-        int gradeHistory = 0;
-        int gradeProgramming = 0;
+        int gradeHistory = 5;
+        int gradeProgramming = 5;
 
         if(historyPercent <= 60) {
             gradeHistory = 2;
@@ -140,19 +138,16 @@ public class IfElseStatementTheme {
             gradeHistory = 3;
         } else if(historyPercent > 73 && historyPercent < 91) {
             gradeHistory = 4;
-        } else {
-            gradeHistory = 5;
         }
         
-         if(programmingPercent <= 60) {
+        if(programmingPercent <= 60) {
             gradeProgramming = 2;
         } else if(programmingPercent > 60 && programmingPercent < 73) {
             gradeProgramming = 3;
         } else if(programmingPercent > 73 && programmingPercent < 91) {
             gradeProgramming = 4;
-        } else {
-            gradeProgramming = 5;
         }
+
         System.out.println("история - " + gradeHistory + ", программирование - " 
                 + gradeProgramming + "\nсредний балл - " 
                 + ((gradeHistory + gradeProgramming) / 2) + "\nсредний % по предметам - " 
@@ -186,45 +181,31 @@ public class IfElseStatementTheme {
 
         if(hundredsBanknote <= numberOfBanknotes100 && tensBanknote <= numberOfBanknotes10 && 
                 onesBanknote <= numberOfBanknotes1) {
-
             need100 = hundredsBanknote;
             need10 = tensBanknote;
             need1 = onesBanknote;
-
-
-            System.out.println("номиналы банкнот\n" + nominal100 + " в количестве - " + need100
-                    + " ,\n"+ nominal10 + " в количестве - " + need10 + ",\n" + nominal1 
-                    + " в количестве - " + need1 + "\nвыдаваемая сумма " + neededSum);
-        }
-
-        if(hundredsBanknote > numberOfBanknotes100) {
+        } else if(hundredsBanknote > numberOfBanknotes100) {
             need100 = numberOfBanknotes100;
             tensBanknote = (hundredsBanknote - numberOfBanknotes100) * 10 + tensBanknote;
 
             if(tensBanknote > numberOfBanknotes10) {
                 need10 = numberOfBanknotes10;
                 need1 = (tensBanknote - numberOfBanknotes10) * 10 + onesBanknote;
-
-                System.out.println("номиналы банкнот\n" + nominal100 + " в количестве - " + need100
-                        + " ,\n"+ nominal10 + " в количестве - " + need10 + ",\n" + nominal1 
-                        + " в количестве - " + need1 + "\nвыдаваемая сумма " + neededSum);
             }
-        }
-
-        if(hundredsBanknote <= numberOfBanknotes100) {
+        } else if(hundredsBanknote <= numberOfBanknotes100) {
             need100 = hundredsBanknote;
             if(tensBanknote > numberOfBanknotes10) {
                 need10 = numberOfBanknotes10;
                 need1 = (tensBanknote - numberOfBanknotes10) * 10 + onesBanknote;
-            System.out.println("номиналы банкнот\n" + nominal100 + " в количестве - " + need100
-                    + " ,\n"+ nominal10 + " в количестве - " + need10 + ",\n" + nominal1 
-                    + " в количестве - " + need1 + "\nвыдаваемая сумма " + neededSum);
             }
-        }
-        if(hundredsBanknote >= numberOfBanknotes100 && tensBanknote > numberOfBanknotes10 && 
+        } else if(hundredsBanknote >= numberOfBanknotes100 && tensBanknote > numberOfBanknotes10 && 
                 onesBanknote > numberOfBanknotes1) {
             System.out.println("банкнот не хватает для выдачи" + neededSum +" суммы");
         }
+
+        System.out.println("номиналы банкнот\n" + nominal100 + " в количестве - " + need100
+                + " ,\n"+ nominal10 + " в количестве - " + need10 + ",\n" + nominal1 
+                + " в количестве - " + need1 + "\nвыдаваемая сумма " + neededSum);
     }
 }
 
