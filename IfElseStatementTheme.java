@@ -172,18 +172,22 @@ public class IfElseStatementTheme {
         int need10 = banknotes10;
         int need100 = banknotes100;
 
-        if(banknotes100 <= numberOfBanknotes100) {
-            need100 = banknotes100;
-            if(banknotes10 > numberOfBanknotes10) {
-                need10 = numberOfBanknotes10;
-                need1 += (banknotes10 - numberOfBanknotes10) * 10;
-                System.out.println("номиналы банкнот\n"  + "100 в количестве - " + need100
-                        + " ,\n"  + "10 в количестве - " + need10 + ",\n" 
-                        + "1 в количестве - " + need1 + "\nвыдаваемая сумма " + neededSum);
-            }
-        } else if(banknotes100 >= numberOfBanknotes100 || banknotes10 > numberOfBanknotes10 || 
-                banknotes1 > numberOfBanknotes1) {
-            System.out.println("банкнот не хватает для выдачи " + neededSum +" суммы");
+        if(banknotes100 > numberOfBanknotes10) {
+            need100 = numberOfBanknotes100;
+            banknotes10 += (banknotes100 - numberOfBanknotes100) * 10;
+        }
+
+        if(banknotes10 > numberOfBanknotes10) {
+            need10 = numberOfBanknotes10;
+            need1 += (banknotes10 - numberOfBanknotes10) * 10;
+        }
+
+        if(banknotes1 > numberOfBanknotes1) {
+            System.out.println("в банкомате недостаточно средств");
+        } else {
+            System.out.println("номиналы банкнот\n"  + "100 в количестве - " + need100
+                    + " ,\n"  + "10 в количестве - " + need10 + ",\n" 
+                    + "1 в количестве - " + need1 + "\nвыдаваемая сумма " + neededSum);
         }
     }
 }
