@@ -50,7 +50,7 @@ public class IfElseStatementTheme {
         int num3 = 73;
 
         if(num3 == 0) {
-            System.out.println(num3 + " равно 0");
+            System.out.println("число равно нулю");
         } else {
             if(num3 % 2 == 0) {
                 System.out.println(num3 + " четное");
@@ -59,9 +59,9 @@ public class IfElseStatementTheme {
             }
 
             if(num3 > 0) {
-                System.out.println(num3 + " положительное число");
+                System.out.println("и положительное число");
             } else {
-                System.out.println(num3 + " отрицательное число");
+                System.out.println("и отрицательное число");
             }
         }
 
@@ -109,20 +109,16 @@ public class IfElseStatementTheme {
 
         System.out.println("\n6. Подсчет суммы вклада и начисленных банком %\n");
         int depositSum = 300000;
-        int interestRate = 0;
-        int interestAccrued = 0;
-        int finalSum = 0;
+        int interestRate = 10;
 
         if(depositSum < 100000) {
             interestRate = 5;
         } else if(depositSum >= 100000 && depositSum < 300000) {
             interestRate = 7;
-        } else {
-            interestRate = 10;
         }
 
-        interestAccrued = depositSum / 100 * interestRate;
-        finalSum = depositSum + interestAccrued;
+        int interestAccrued = depositSum / 100 * interestRate;
+        int finalSum = depositSum + interestAccrued;
         System.out.println(depositSum + " сумма вклада\n" + interestAccrued +
                  " начисленный %\n" + finalSum + " итоговая сумма с %\n");
 
@@ -166,46 +162,29 @@ public class IfElseStatementTheme {
 
         System.out.println("\n9. Подсчет количества банкнот\n");
         int neededSum = 567; 
-        int nominal1 = 1;
-        int nominal10 = 10;
-        int nominal100 = 100;
         int numberOfBanknotes1 = 50;
         int numberOfBanknotes10 = 5;
         int numberOfBanknotes100 = 10;
-        int need100 = 0;
-        int need10 = 0;
-        int need1 = 0;
-        int onesBanknote = neededSum % 10;
-        int tensBanknote = neededSum % 100 / 10;
-        int hundredsBanknote = neededSum / 100;
+        int banknotes1 = neededSum % 10;
+        int banknotes10 = neededSum % 100 / 10;
+        int banknotes100 = neededSum / 100;
+        int need1 = banknotes1;
+        int need10 = banknotes10;
+        int need100 = banknotes100;
 
-        if(hundredsBanknote <= numberOfBanknotes100 && tensBanknote <= numberOfBanknotes10 && 
-                onesBanknote <= numberOfBanknotes1) {
-            need100 = hundredsBanknote;
-            need10 = tensBanknote;
-            need1 = onesBanknote;
-        } else if(hundredsBanknote > numberOfBanknotes100) {
-            need100 = numberOfBanknotes100;
-            tensBanknote = (hundredsBanknote - numberOfBanknotes100) * 10 + tensBanknote;
-
-            if(tensBanknote > numberOfBanknotes10) {
+        if(banknotes100 <= numberOfBanknotes100) {
+            need100 = banknotes100;
+            if(banknotes10 > numberOfBanknotes10) {
                 need10 = numberOfBanknotes10;
-                need1 = (tensBanknote - numberOfBanknotes10) * 10 + onesBanknote;
+                need1 += (banknotes10 - numberOfBanknotes10) * 10;
+                System.out.println("номиналы банкнот\n"  + "100 в количестве - " + need100
+                        + " ,\n"  + "10 в количестве - " + need10 + ",\n" 
+                        + "1 в количестве - " + need1 + "\nвыдаваемая сумма " + neededSum);
             }
-        } else if(hundredsBanknote <= numberOfBanknotes100) {
-            need100 = hundredsBanknote;
-            if(tensBanknote > numberOfBanknotes10) {
-                need10 = numberOfBanknotes10;
-                need1 = (tensBanknote - numberOfBanknotes10) * 10 + onesBanknote;
-            }
-        } else if(hundredsBanknote >= numberOfBanknotes100 && tensBanknote > numberOfBanknotes10 && 
-                onesBanknote > numberOfBanknotes1) {
-            System.out.println("банкнот не хватает для выдачи" + neededSum +" суммы");
+        } else if(banknotes100 >= numberOfBanknotes100 || banknotes10 > numberOfBanknotes10 || 
+                banknotes1 > numberOfBanknotes1) {
+            System.out.println("банкнот не хватает для выдачи " + neededSum +" суммы");
         }
-
-        System.out.println("номиналы банкнот\n" + nominal100 + " в количестве - " + need100
-                + " ,\n"+ nominal10 + " в количестве - " + need10 + ",\n" + nominal1 
-                + " в количестве - " + need1 + "\nвыдаваемая сумма " + neededSum);
     }
 }
 
