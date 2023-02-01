@@ -4,19 +4,19 @@ public class CyclesTheme {
         System.out.println("1. Подсчет суммы четных и нечетных чисел\n");
         int count = -10;
         int sumEven = 0;
-        int sumUneven = 0;
+        int sumOdd = 0;
 
         do {
             if(count % 2 == 0) {
-                sumUneven += count;
-            } else if(count % 2 != 0){
                 sumEven += count;
+            } else if(count % 2 != 0){
+                sumOdd += count;
             }
             count++;
         } while (count <= 21);
 
         System.out.println("в промежутке [-10, 21] сумма четных чисел = " + sumEven 
-                + ", а нечетных = " + sumUneven);
+                + ", а нечетных = " + sumOdd);
 
         System.out.println("\n2. Вывод чисел в интервале (min и max) в порядке убывания\n");
         int num1 = 5;
@@ -51,9 +51,9 @@ public class CyclesTheme {
         System.out.print("исходное число в обратном порядке - ");
 
         while(num != 0) {
-            int reversDigit = num % 10;
-            System.out.print(reversDigit);
-            sumDigits += reversDigit;
+            int digit = num % 10;
+            System.out.print(digit);
+            sumDigits += digit;
             num /= 10;
         }
 
@@ -79,7 +79,7 @@ public class CyclesTheme {
             }
         }
 
-        System.out.println("\n5. Проверка количества двоек на четность/нечетность\n");
+        System.out.println("\n\n5. Проверка количества двоек на четность/нечетность\n");
         int num4 = 3242592;
         int numTwos = 0;
 
@@ -107,7 +107,7 @@ public class CyclesTheme {
             for(int j = 0; j < 10; j++) {
                 System.out.print("*");
             }
-            System.out.println("");
+            System.out.println();
         }
 
         System.out.println("\n");
@@ -121,30 +121,30 @@ public class CyclesTheme {
                 System.out.print("#");
                 numOfRows--;
             }
-            System.out.println("");
+            System.out.println();
             numOfColumns--;
         }
 
         System.out.println("\n");
 
-        int numOfSymbolPerLine = 1;
-        int numOfLines = 1;
+        numOfColumns = 1;
+        numOfRows = 1;
         int counter = 1;
 
         do {
-            numOfSymbolPerLine = 1;
+            numOfColumns = 1;
             do {
                 System.out.print("$");
-                numOfSymbolPerLine++;
-            } while (numOfSymbolPerLine <= counter);
+                numOfColumns++;
+            } while (numOfColumns <= counter);
             System.out.println();
-            numOfLines++;
-            if (numOfLines <= 3) {
+            numOfRows++;
+            if (numOfRows <= 3) {
                 counter++;
             } else {
                 counter--;
             }
-        } while (numOfLines <= 5);
+        } while (numOfRows <= 5);
 
         System.out.println("\n7. Отображение ASCII-символов");
         for(char i = 33; i <= 127; i++) {
@@ -160,7 +160,7 @@ public class CyclesTheme {
         int numPalindrome = 0;
         int copyNumOriginal = numOriginal;
 
-        while(numOriginal != 0) {
+        while(numOriginal > 0) {
             numPalindrome = (numPalindrome * 10) + numOriginal % 10;
             numOriginal /= 10;
         }
@@ -181,13 +181,12 @@ public class CyclesTheme {
 
         while (numLucky != 0) {
             if(countLucky < 3) {
-            secondSumLucky += (numLucky % 10);
-            countLucky++;
-            numLucky /= 10;
+                secondSumLucky += (numLucky % 10);
+                countLucky++;
             } else {
                 firstSumLucky += (numLucky % 10);
-                numLucky /= 10;
             }
+            numLucky /= 10;
         }
 
         System.out.println("сумма цифр " + firstHalfOfNum + " = " + firstSumLucky);
@@ -207,7 +206,7 @@ public class CyclesTheme {
             for(int j = 2; j < 10; j++) {
                 System.out.printf("%3d", (i * j));
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 }
