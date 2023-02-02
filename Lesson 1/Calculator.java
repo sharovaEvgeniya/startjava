@@ -22,7 +22,7 @@ public class Calculator {
                 System.out.println(result);
             }
         }
-        
+
         System.out.println(a + " " + sign + " " + b + " = " + result);
     }
 }
