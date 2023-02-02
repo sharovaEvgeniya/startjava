@@ -19,7 +19,6 @@ public class Calculator {
         } else if(sign == '^') {
             for(int i = 0; i < b; i++) {
                 result *= a;
-                System.out.println(result);
             }
         }
 
