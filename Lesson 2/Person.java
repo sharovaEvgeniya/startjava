@@ -5,19 +5,19 @@ public class Person {
     int weight = 57;
     int age = 26;
 
-    void toGo() {
+    void go() {
         System.out.println("иди");
     }
 
-    void toSit() {
+    void sit() {
         System.out.println("сиди");
     }
 
-    void toRun() {
+    void run() {
         System.out.println("беги");
     }
 
-    void toSay() {
+    void say() {
         System.out.println("говори");
     }
 
