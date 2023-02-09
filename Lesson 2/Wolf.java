@@ -1,8 +1,8 @@
 public class Wolf {
-    String nickname;
-    String color;
-    int weight;
-    int age;
+    private String nickname;
+    private String color;
+    private int weight;
+    private int age;
 
     public void walk() {
         System.out.println("Идет");
@@ -22,5 +22,41 @@ public class Wolf {
 
     public void hunt() {
         System.out.println("Охотится");
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setAge(int age) {
+        if(age > 8) {
+            System.out.println("Некорректный возраст");
+        } else {
+            this.age = age;
+        }
+    }
+
+    public int getAge() {
+        return age;
     }
 }
