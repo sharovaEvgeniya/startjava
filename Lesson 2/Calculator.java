@@ -1,5 +1,5 @@
 public class Calculator {
-    public void calculator(int num1, char sign, int num2) {
+    public void calculate(int num1, char sign, int num2) {
         int result = 1;
         switch (sign) {
             case '+':

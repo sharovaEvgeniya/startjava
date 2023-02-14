@@ -1,6 +1,6 @@
 public class Jaeger {
     String modelName;
-    String marc;
+    String mark;
     String origin;
     float height;
     float weight;
@@ -10,10 +10,10 @@ public class Jaeger {
     public Jaeger() {
     }
 
-    public Jaeger(String modelName, String marc, String origin,
+    public Jaeger(String modelName, String mark, String origin,
                   float height, float weight, int strength, int armor) {
         this.modelName = modelName;
-        this.marc = marc;
+        this.mark = mark;
         this.origin = origin;
         this.height = height;
         this.weight = weight;
@@ -29,12 +29,12 @@ public class Jaeger {
         this.modelName = modelName;
     }
 
-    public String getMarc() {
-        return marc;
+    public String getMark() {
+        return mark;
     }
 
-    public void setMarc(String marc) {
-        this.marc = marc;
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 
     public String getOrigin() {
@@ -78,7 +78,8 @@ public class Jaeger {
     }
 
     void drift() {
-        System.out.println("true");;
+        System.out.println("true");
+        ;
     }
 
     void move() {
@@ -86,14 +87,20 @@ public class Jaeger {
     }
 
     void scan() {
-        System.out.println("scanning");;
+        System.out.println("scanning");
+        ;
     }
+
+    void useVortexCannon() {
+        System.out.println("activated");
+    }
+
 
     @Override
     public String toString() {
         return "Jaeger{" +
                 "modelName='" + modelName + '\'' +
-                ", marc='" + marc + '\'' +
+                ", marc='" + mark + '\'' +
                 ", origin='" + origin + '\'' +
                 ", height=" + height +
                 ", weight=" + weight +
@@ -101,9 +108,4 @@ public class Jaeger {
                 ", armor=" + armor +
                 '}';
     }
-
-    void useVortexCannon() {
-        System.out.println("activated");
-    }
-
 }

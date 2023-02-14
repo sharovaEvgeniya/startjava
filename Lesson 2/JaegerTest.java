@@ -5,7 +5,7 @@ public class JaegerTest {
 
         Jaeger jaeger2 = new Jaeger();
         jaeger2.setModelName("Striker Eureka");
-        jaeger2.setMarc("Mark-5");
+        jaeger2.setMark("Mark-5");
         jaeger2.setOrigin("Australia");
         jaeger2.setHeight(250.3f);
         jaeger2.setWeight(18.50f);
