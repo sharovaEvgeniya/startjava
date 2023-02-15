@@ -14,7 +14,9 @@ public class GuessNumber {
         Random random = new Random();
         Scanner scanner = new Scanner(System.in);
         int numPlayer = 0;
-        int numRandom = random.ints(1, 1, 100).sum();
+        int max = 100;
+        int min = 1;
+        int numRandom = random.nextInt(max - min) + min;
         while (true) {
             System.out.println("Первый игрок " + player1.getName() + " введите число ");
             numPlayer = scanner.nextInt();
@@ -27,6 +29,7 @@ public class GuessNumber {
             } else {
                 System.out.println("число " + numPlayer + " меньше того, что загадал компьютер");
             }
+
             System.out.println("Второй игрок " + player2.getName() + " введите число ");
             numPlayer = scanner.nextInt();
             if (numPlayer == numRandom) {

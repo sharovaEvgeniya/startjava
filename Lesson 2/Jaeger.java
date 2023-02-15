@@ -7,11 +7,10 @@ public class Jaeger {
     int strength;
     int armor;
 
-    public Jaeger() {
-    }
+    public Jaeger() {}
 
     public Jaeger(String modelName, String mark, String origin,
-                  float height, float weight, int strength, int armor) {
+            float height, float weight, int strength, int armor) {
         this.modelName = modelName;
         this.mark = mark;
         this.origin = origin;
@@ -79,7 +78,6 @@ public class Jaeger {
 
     void drift() {
         System.out.println("true");
-        ;
     }
 
     void move() {
@@ -88,13 +86,11 @@ public class Jaeger {
 
     void scan() {
         System.out.println("scanning");
-        ;
     }
 
     void useVortexCannon() {
         System.out.println("activated");
     }
-
 
     @Override
     public String toString() {
