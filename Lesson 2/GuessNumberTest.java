@@ -5,15 +5,21 @@ public class GuessNumberTest {
         Scanner scanner = new Scanner(System.in);
         Player player1 = new Player(scanner.nextLine());
         Player player2 = new Player(scanner.nextLine());
-        GuessNumber guessNumber = new GuessNumber(player1, player2);
-        guessNumber.play();
+        GuessNumber game = new GuessNumber(player1, player2);
         String answer = "yes";
-        do {
-            System.out.println("Хотите продолжить игру? [yes/no]: ");
-            answer = scanner.nextLine();
+        
+        while (true) {
             if (answer.equals("yes")) {
-                guessNumber.play();
+                do {
+                    if (answer.equals("yes")) {
+                        game.play();
+                    }
+                    System.out.println("Хотите продолжить игру? [yes/no]: ");
+                    answer = scanner.nextLine();
+                } while (!answer.equals("yes") && !answer.equals("no"));
+            } else {
+                break;
             }
-        } while (!answer.equals("yes") && !answer.equals("no"));
+        }
     }
 }
