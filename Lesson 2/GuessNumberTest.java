@@ -7,19 +7,16 @@ public class GuessNumberTest {
         Player player2 = new Player(scanner.nextLine());
         GuessNumber game = new GuessNumber(player1, player2);
         String answer = "yes";
-        
-        while (true) {
-            if (answer.equals("yes")) {
-                do {
-                    if (answer.equals("yes")) {
-                        game.play();
-                    }
-                    System.out.println("Хотите продолжить игру? [yes/no]: ");
-                    answer = scanner.nextLine();
-                } while (!answer.equals("yes") && !answer.equals("no"));
-            } else {
-                break;
-            }
+
+        while (answer.equals("yes")) {
+            do {
+                if (answer.equals("yes")) {
+                    game.play();
+                }
+                System.out.println("Хотите продолжить игру? [yes/no]: ");
+                answer = scanner.nextLine();
+            } while (!answer.equals("yes") && !answer.equals("no"));
         }
+        scanner.close();
     }
 }
