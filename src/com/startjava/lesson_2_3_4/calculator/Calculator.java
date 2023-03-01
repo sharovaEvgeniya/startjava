@@ -1,5 +1,3 @@
-package com.startjava.lesson_2_3.calculator;
-
 public class Calculator {
     public void calculate(int num1, char sign, int num2) {
         int result = 1;
@@ -20,7 +18,7 @@ public class Calculator {
                 result = num1 % num2;
                 break;
             case '^':
-                for(int i = 0; i < num2; i++) {
+                for (int i = 0; i < num2; i++) {
                     result *= num1;
                 }
                 break;
