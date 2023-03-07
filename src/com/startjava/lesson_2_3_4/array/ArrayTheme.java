@@ -1,5 +1,5 @@
+import java.text.DecimalFormat;
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class ArrayTheme {
 
@@ -30,11 +30,44 @@ public class ArrayTheme {
         for (int i = 0; i < length; i++) {
             numbers[i] = i;
         }
-        System.out.println(Arrays.toString(numbers));
-        int sumArr = 0;
+
+        int sumArr = 1;
         for (int i = 1; i < length - 1; i++) {
             sumArr *= numbers[i];
             System.out.print(numbers[i] + (i != length - 2 ? " * " : " = " + sumArr));
+        }
+        System.out.println("\n" + numbers[0] + " и " + numbers[9]);
+
+        System.out.println("\n3. Удаление элементов массива");
+        double[] doubleArr = new double[15];
+        length = doubleArr.length;
+        for (int i = 0; i < length; i++) {
+            doubleArr[i] = Math.random();
+        }
+        System.out.println("Исходный массив :");
+        printDoubleArray(doubleArr);
+        int count = 0;
+        double middleCell = doubleArr[length / 2];
+        for (int i = 0; i < length; i++) {
+            if (doubleArr[i] > middleCell) {
+                doubleArr[i] = 0;
+                count++;
+            }
+        }
+        System.out.println("\nИзмененный массив :");
+        printDoubleArray(doubleArr);
+        System.out.println("\nКоличество обнуленных ячеек " + count);
+
+
+    }
+
+    private static void printDoubleArray(double[] doubleArr) {
+        int length = doubleArr.length;
+        for (int i = 0; i < length; i++) {
+            System.out.printf("%.3f ", doubleArr[i]);
+            if (i == 7) {
+                System.out.println();
+            }
         }
     }
 }
