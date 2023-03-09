@@ -1,4 +1,3 @@
-import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public class ArrayTheme {
@@ -78,21 +77,39 @@ public class ArrayTheme {
         System.out.println("\n5. Генерация уникальных чисел");
         numbers = new int[30];
         length = numbers.length;
+        int randomNumber;
         for (int i = 0; i < length; i++) {
-            numbers[i] = (int) (Math.random() * 40 + 60);
-        }
-        int value = 0;
-        for (int i = 0; i < length; i++) {
-            value = numbers[i];
-            for (int j = 0; j < length; j++) {
-                if (value == numbers[j]) {
-                    numbers[j] = (int) (Math.random() * 40 + 60);
-                }
-
-            }
+            do {
+                randomNumber = (int) (Math.random() * 40 + 60);
+            } while (equalsElement(randomNumber, numbers));
+            numbers[i] = randomNumber;
         }
         Arrays.sort(numbers);
-        System.out.println(Arrays.toString(numbers));
+        for (int i = 0; i < length; i++) {
+            System.out.printf(numbers[i] + " ");
+            if (i == 9 || i == 19) {
+                System.out.println();
+            }
+        }
+        System.out.println("\n6. Копирование не пустых строк");
+        String[] stringArray = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        length = stringArray.length;
+        int lengthNewArray = 0;
+        for (int i = 0; i < length; i++) {
+            if (!stringArray[i].isBlank()) {
+                lengthNewArray++;
+            }
+        }
+        String[] newStringArray = new String[lengthNewArray];
+        count = 0;
+        for (int i = 0; i < length; i++) {
+            if (!stringArray[i].isBlank()) {
+                System.arraycopy(stringArray, i, newStringArray, count, );
+                count++;
+            }
+
+        }
+        Arrays.toString(newStringArray);
     }
 
     private static void printNumbersArray(int[] array) {
@@ -111,4 +128,14 @@ public class ArrayTheme {
             }
         }
     }
+
+    private static boolean equalsElement(int randomNumber, int[] numbers) {
+        for (int number : numbers) {
+            if (randomNumber == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
