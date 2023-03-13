@@ -37,17 +37,17 @@ public class ArrayTheme {
         }
         System.out.println("Исходный массив :");
         printDoubleArr(doubleArr);
-        length = 0;
+        int count = 0;
         double middleCellValue = doubleArr[length / 2];
         for (int i = 0; i < length; i++) {
             if (doubleArr[i] > middleCellValue) {
                 doubleArr[i] = 0;
-                length++;
+                count++;
             }
         }
         System.out.println("\nИзмененный массив :");
         printDoubleArr(doubleArr);
-        System.out.println("\nКоличество обнуленных ячеек " + length);
+        System.out.println("\nКоличество обнуленных ячеек " + count);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
         char[] alphabet = new char[26];
