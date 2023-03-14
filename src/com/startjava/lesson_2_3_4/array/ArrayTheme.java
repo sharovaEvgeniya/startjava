@@ -4,30 +4,30 @@ public class ArrayTheme {
 
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
-        int[] numbersArr = {4, 1, 5, 2, 7, 3, 6};
-        int length = numbersArr.length;
+        int[] uniqueNums = {4, 1, 5, 2, 7, 3, 6};
+        int length = uniqueNums.length;
         System.out.print("Массив до модификации :");
-        printNumbersArr(numbersArr);
+        printNumbersArr(uniqueNums);
         for (int i = 0; i < length; i++) {
-            int temp = numbersArr[i];
-            numbersArr[i] = numbersArr[--length];
-            numbersArr[length] = temp;
+            int temp = uniqueNums[i];
+            uniqueNums[i] = uniqueNums[--length];
+            uniqueNums[length] = temp;
         }
         System.out.print("\nМассив после модификации :");
-        printNumbersArr(numbersArr);
+        printNumbersArr(uniqueNums);
 
         System.out.println("\n\n2. Вывод произведения элементов массива");
-        numbersArr = new int[10];
-        length = numbersArr.length;
+        uniqueNums = new int[10];
+        length = uniqueNums.length;
         for (int i = 0; i < length; i++) {
-            numbersArr[i] = i;
+            uniqueNums[i] = i;
         }
         int result = 1;
         for (int i = 1; i < length - 1; i++) {
-            result *= numbersArr[i];
-            System.out.print(numbersArr[i] + (i != length - 2 ? " * " : " = " + result));
+            result *= uniqueNums[i];
+            System.out.print(uniqueNums[i] + (i != length - 2 ? " * " : " = " + result));
         }
-        System.out.println("\n" + numbersArr[0] + " и " + numbersArr[9]);
+        System.out.println("\n" + uniqueNums[0] + " и " + uniqueNums[9]);
 
         System.out.println("\n3. Удаление элементов массива");
         double[] doubleArr = new double[15];
@@ -52,9 +52,8 @@ public class ArrayTheme {
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
         char[] alphabet = new char[26];
         length = alphabet.length;
-        char capitalLetter = 'A';
         for (int i = 0; i < length; i++) {
-            alphabet[i] = capitalLetter++;
+            alphabet[i] = (char) ('A' + i);
         }
         for (int i = 0; i < length; i++) {
             for (int j = 0; j <= i; j++) {
@@ -64,49 +63,48 @@ public class ArrayTheme {
         }
 
         System.out.println("\n5. Генерация уникальных чисел");
-        numbersArr = new int[30];
-        length = numbersArr.length;
+        uniqueNums = new int[30];
+        length = uniqueNums.length;
         int randomNum;
         for (int i = 0; i < length; i++) {
             do {
                 randomNum = (int) (Math.random() * 40 + 60);
-            } while (isUnique(randomNum, numbersArr));
-            numbersArr[i] = randomNum;
-
+            } while (!isUnique(randomNum, uniqueNums));
+            uniqueNums[i] = randomNum;
         }
-        Arrays.sort(numbersArr);
+        Arrays.sort(uniqueNums);
         for (int i = 0; i < length; i++) {
-            System.out.printf(numbersArr[i] + " ");
+            System.out.printf(uniqueNums[i] + " ");
             if (i == 9 || i == 19) {
                 System.out.println();
             }
         }
 
         System.out.println("\n6. Копирование не пустых строк");
-        String[] srcString = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        int countNonBlankString = 0;
-        for (String str : srcString) {
+        String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        int countNonBlankStrings = 0;
+        for (String str : srcStrings) {
             if (!str.isBlank()) {
-                countNonBlankString++;
+                countNonBlankStrings++;
             }
         }
-        String[] destString = new String[countNonBlankString];
+        String[] destStrings = new String[countNonBlankStrings];
         int destPos = 0;
         length = 0;
-        for (int i = 0; i < srcString.length; i++) {
+        for (int i = 0; i < srcStrings.length; i++) {
             int srcPos = i;
-            while (!srcString[i].isBlank()) {
+            while (!srcStrings[i].isBlank()) {
                 length++;
                 i++;
             }
             if (length != 0) {
-                System.arraycopy(srcString, srcPos, destString, destPos, length);
+                System.arraycopy(srcStrings, srcPos, destStrings, destPos, length);
                 destPos += length;
                 length = 0;
             }
         }
-        printStringArr(srcString);
-        printStringArr(destString);
+        printStringArr(srcStrings);
+        printStringArr(destStrings);
     }
 
     private static void printNumbersArr(int[] arr) {
@@ -128,10 +126,10 @@ public class ArrayTheme {
     private static boolean isUnique(int randomNumber, int[] arr) {
         for (int number : arr) {
             if (randomNumber == number) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private static void printStringArr(String[] arr) {
