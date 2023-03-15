@@ -7,12 +7,7 @@ public class CalculatorTest {
         String answer = "yes";
         do {
             System.out.print("Введите математическое выражение: ");
-            String mathematicalExpression = scanner.nextLine();
-            String[] mathematicalExpressionArray = mathematicalExpression.split(" ");
-            int num1 = Integer.parseInt(mathematicalExpressionArray[0]);
-            int num2 = Integer.parseInt(mathematicalExpressionArray[2]);
-            char sign = mathematicalExpressionArray[1].charAt(0);
-            double result = calculator.calculate(num1, sign, num2);
+            double result = calculator.calculate(scanner.nextLine());
             if (result % 1 == 0) {
                 System.out.println("Результат : " + (int) result);
             } else {
