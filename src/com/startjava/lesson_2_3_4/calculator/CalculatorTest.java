@@ -7,8 +7,14 @@ public class CalculatorTest {
         do {
             if (answer.equals("yes")) {
                 System.out.print("Введите математическое выражение: ");
-                double result = Calculator.calculate(scanner.nextLine());
-                outputsResult(result);
+                try {
+                    double result = Calculator.calculate(scanner.nextLine());
+                    outputsResult(result);
+                } catch (ArithmeticException exception) {
+                    System.out.println("Введите положительные числа");
+                } catch (NumberFormatException exception) {
+                    System.out.println("Введите целые числа");
+                }
             }
             System.out.print("Хотите продолжить вычисления? [yes/no]: ");
             answer = scanner.nextLine();
