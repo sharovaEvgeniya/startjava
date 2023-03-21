@@ -6,7 +6,7 @@ public class Calculator {
     public static double calculate(String expression) {
         parseExpression(expression);
         try {
-            if (num1 < 0 || num2 < 0) {
+            if (num1 <= 0 || num2 <= 0) {
                 throw new RuntimeException();
             }
             return switch (sign) {
@@ -22,7 +22,7 @@ public class Calculator {
                 }
             };
         } catch (RuntimeException exception) {
-            System.out.println("Введите корректные значения");
+            System.out.println("Введите положительные числа");
         }
         return 0;
     }
