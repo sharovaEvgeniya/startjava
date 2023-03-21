@@ -22,7 +22,6 @@ public class CalculatorTest {
     }
 
     public static void outputsResult(double result) {
-
         if (result % 1 == 0) {
             System.out.println("Результат : " + (int) result);
         } else {
