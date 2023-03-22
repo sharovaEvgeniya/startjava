@@ -10,9 +10,9 @@ public class CalculatorTest {
                 try {
                     double result = Calculator.calculate(scanner.nextLine());
                     outputsResult(result);
-                } catch (ArithmeticException exception) {
+                } catch (ArithmeticException e) {
                     System.out.println("Введите положительные числа");
-                } catch (NumberFormatException exception) {
+                } catch (NumberFormatException e) {
                     System.out.println("Введите целые числа");
                 }
             }
@@ -22,10 +22,7 @@ public class CalculatorTest {
     }
 
     public static void outputsResult(double result) {
-        if (result % 1 == 0) {
-            System.out.println("Результат : " + (int) result);
-        } else {
-            System.out.printf("Результат : %.3f", result);
-        }
+        String output = (result % 1 == 0) ? "Результат : " + (int) result : "Результат : " + result;
+        System.out.println(output);
     }
 }
