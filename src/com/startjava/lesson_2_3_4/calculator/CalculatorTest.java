@@ -22,7 +22,7 @@ public class CalculatorTest {
     }
 
     public static void outputsResult(double result) {
-        String output = (result % 1 == 0) ? "Результат : " + (int) result : "Результат : " + result;
+        String output = (result % 1 == 0) ? "Результат :  " + (int) result : "Результат : " + result;
         System.out.println(output);
     }
 }
