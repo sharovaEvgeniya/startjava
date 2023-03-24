@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class GuessNumberTest {
@@ -8,15 +9,13 @@ public class GuessNumberTest {
         GuessNumber game = new GuessNumber(player1, player2);
         String answer = "yes";
 
-        while (answer.equals("yes")) {
-            do {
-                if (answer.equals("yes")) {
-                    game.play();
-                }
-                System.out.println("Хотите продолжить игру? [yes/no]: ");
-                answer = scanner.nextLine();
-            } while (!answer.equals("yes") && !answer.equals("no"));
-        }
+        do {
+            if (answer.equals("yes")) {
+                game.play();
+            }
+            System.out.println("Хотите продолжить игру? [yes/no]: ");
+            answer = scanner.nextLine();
+        } while (!answer.equals("no"));
         scanner.close();
     }
 }

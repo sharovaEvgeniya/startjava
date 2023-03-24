@@ -1,9 +1,10 @@
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-    private Player player1;
-    private Player player2;
+    private  Player player1;
+    private  Player player2;
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
@@ -11,35 +12,61 @@ public class GuessNumber {
     }
 
     public void play() {
-        Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
-        int targetNum = random.nextInt(101 - 1) + 1;
-
+        int targetNumber = randomNumber();
+        clear();
         while (true) {
-            int playerNum = 0;
-            System.out.println("Первый игрок " + player1.getName() + " введите число ");
-            playerNum = scanner.nextInt();
-            if (playerNum == targetNum) {
-                System.out.println("Вы победили! Число загаданное компьютером = " + targetNum);
+            if (!checkAttempts(player1) || !checkAttempts(player2)
+                    || !guessNumber(player1, targetNumber) || !guessNumber(player2, targetNumber)) {
                 break;
-            }
-            if (playerNum > targetNum) {
-                System.out.println("число " + playerNum + " больше того, что загадал компьютер");
-            } else {
-                System.out.println("число " + playerNum + " меньше того, что загадал компьютер");
-            }
-
-            System.out.println("Второй игрок " + player2.getName() + " введите число ");
-            playerNum = scanner.nextInt();
-            if (playerNum == targetNum) {
-                System.out.println("Вы победили! Число загаданное компьютером = " + targetNum);
-                break;
-            }
-            if (playerNum > targetNum) {
-                System.out.println("число " + playerNum + " больше того, что загадал компьютер");
-            } else {
-                System.out.println("число " + playerNum + " меньше того, что загадал компьютер");
             }
         }
+        print();
+    }
+
+    public int randomNumber() {
+        Random random = new Random();
+        return random.nextInt(101 - 1) + 1;
+    }
+
+    public void clear() {
+        player1.clearInputNumbers();
+        player2.clearInputNumbers();
+    }
+
+    public boolean checkAttempts(Player player) {
+        if (player.getNumberAttempts() >= 10) {
+            System.out.println("У " + player.getName() + " закончились попытки");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean guessNumber(Player player, int targetNumber) {
+        int playerNumber = inputNumber(player);
+        if (playerNumber == targetNumber) {
+            player.addNumber(playerNumber);
+            System.out.println("Игрок " + player.getName() + " угадал число " + targetNumber +
+                    " с " + player.getNumberAttempts() + " попытки");
+            return false;
+        }
+        if (playerNumber > targetNumber) {
+            player.addNumber(playerNumber);
+            System.out.println("число " + playerNumber + " больше того, что загадал компьютер");
+        } else {
+            player.addNumber(playerNumber);
+            System.out.println("число " + playerNumber + " меньше того, что загадал компьютер");
+        }
+        return true;
+    }
+
+    public void print() {
+        player1.printInputNumbers();
+        player2.printInputNumbers();
+    }
+
+    public int inputNumber(Player player) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Игрок " + player.getName() + " введите число");
+        return scanner.nextInt();
     }
 }
