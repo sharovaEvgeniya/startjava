@@ -9,14 +9,14 @@ public class Player {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public int getNumberAttempts() {
         return numberAttempts;
     }
 
-
-    public String getName() {
-        return name;
-    }
 
     public void addNumber(int number) {
         inputNumbers[numberAttempts] = number;
@@ -25,15 +25,6 @@ public class Player {
 
     public int[] copyPart() {
         return inputNumbers = Arrays.copyOf(inputNumbers, numberAttempts);
-    }
-
-    public void printInputNumbers() {
-        int[] copyArray = copyPart();
-        System.out.print(name + " : ");
-        for (int j : copyArray) {
-            System.out.print(j + " ");
-        }
-        System.out.println();
     }
 
     public void clearInputNumbers() {
