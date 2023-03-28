@@ -24,11 +24,11 @@ public class Player {
     }
 
     public int[] copyPart() {
-        return inputNumbers = Arrays.copyOf(inputNumbers, numberAttempts);
+        return Arrays.copyOf(inputNumbers, numberAttempts);
     }
 
     public void clearInputNumbers() {
-        Arrays.fill(inputNumbers, 0);
+        Arrays.fill(inputNumbers, 0,numberAttempts,0);
         numberAttempts = 0;
     }
 }
