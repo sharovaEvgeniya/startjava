@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3_4.animal;
+
 public class WolfTest {
 
     public static void main(String[] args) {
@@ -7,9 +9,6 @@ public class WolfTest {
         wolf.setWeight(45);
         wolf.setAge(9);
 
-        // System.out.println("кличка волка " + wolf.getNickname() + "\nокрас "
-        //         + wolf.getColor() + "\nвес " + wolf.getWeight() + "\nвозраст " 
-        //         + wolf.getAge() +"\n");
         System.out.println("age " + wolf.getAge());
         wolf.walk();
         wolf.sit();
