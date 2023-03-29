@@ -15,22 +15,21 @@ public class Player {
         return name;
     }
 
+    public int[] getInputNumbers() {
+        return Arrays.copyOf(inputNumbers, numberAttempts);
+    }
+
     public int getNumberAttempts() {
         return numberAttempts;
     }
-
 
     public void addNumber(int number) {
         inputNumbers[numberAttempts] = number;
         numberAttempts++;
     }
 
-    public int[] copyPart() {
-        return Arrays.copyOf(inputNumbers, numberAttempts);
-    }
-
-    public void clearInputNumbers() {
-        Arrays.fill(inputNumbers, 0,numberAttempts,0);
+    public void clear() {
+        Arrays.fill(inputNumbers, 0, numberAttempts, 0);
         numberAttempts = 0;
     }
 }

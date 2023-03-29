@@ -13,25 +13,27 @@ public class GuessNumber {
     }
 
     public void play() {
-        int targetNumber = randomNumberGeneration();
+        int targetNumber = generationRandomNumber();
         clear();
         while (true) {
-            if (!checkAttempts(player1) || !checkAttempts(player2)
-                    || !isGuessed(player1, targetNumber) || !isGuessed(player2, targetNumber)) {
+            if (!checkAttempts(player1) || !checkAttempts(player2)) {
+                break;
+            }
+            if (!isGuessed(player1, targetNumber) || !isGuessed(player2, targetNumber)) {
                 break;
             }
         }
         print();
     }
 
-    public int randomNumberGeneration() {
+    public int generationRandomNumber() {
         Random random = new Random();
         return random.nextInt((100) + 1);
     }
 
     public void clear() {
-        player1.clearInputNumbers();
-        player2.clearInputNumbers();
+        player1.clear();
+        player2.clear();
     }
 
     public boolean checkAttempts(Player player) {
@@ -50,20 +52,9 @@ public class GuessNumber {
                     " с " + player.getNumberAttempts() + " попытки");
             return false;
         }
-        answerResult(playerNumber, targetNumber);
+        String answer = (playerNumber > targetNumber) ? playerNumber + " больше " : playerNumber + " меньше ";
+        System.out.println("число " + answer + "того, что загадал компьютер");
         return true;
-    }
-
-    public void answerResult(int playerNumber, int targetNumber) {
-        String answer = (playerNumber > targetNumber) ? "число " + playerNumber +
-                " больше того, что загадал компьютер" : "число " + playerNumber +
-                " меньше того, что загадал компьютер";
-        System.out.println(answer);
-    }
-
-    public void print() {
-        printInputNumbers(player1);
-        printInputNumbers(player2);
     }
 
     public int inputNumber(Player player) {
@@ -72,11 +63,16 @@ public class GuessNumber {
         return scanner.nextInt();
     }
 
+    public void print() {
+        printInputNumbers(player1);
+        printInputNumbers(player2);
+    }
+
     public void printInputNumbers(Player player) {
-        int[] copyArray = player.copyPart();
+        int[] copyInputNumbers = player.getInputNumbers();
         System.out.print(player.getName() + " : ");
-        for (int j : copyArray) {
-            System.out.print(j + " ");
+        for (int inputNumber : copyInputNumbers) {
+            System.out.print(inputNumber + " ");
         }
         System.out.println();
     }
