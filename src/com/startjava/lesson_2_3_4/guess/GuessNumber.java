@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class GuessNumber {
     private Player player1;
     private Player player2;
+    private int targetNumber;
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
@@ -13,30 +14,27 @@ public class GuessNumber {
     }
 
     public void play() {
-        int targetNumber = generationRandomNumber();
+        targetNumber = generateRandomNumber();
         clear();
-        while (true) {
-            if (!checkAttempts(player1) || !checkAttempts(player2)) {
+        do {
+            if (!isGuessed(player1) || !isGuessed(player2)) {
                 break;
             }
-            if (!isGuessed(player1, targetNumber) || !isGuessed(player2, targetNumber)) {
-                break;
-            }
-        }
+        } while (checkAttempts(player1) || checkAttempts(player2));
         print();
     }
 
-    public int generationRandomNumber() {
+    private int generateRandomNumber() {
         Random random = new Random();
         return random.nextInt((100) + 1);
     }
 
-    public void clear() {
+    private void clear() {
         player1.clear();
         player2.clear();
     }
 
-    public boolean checkAttempts(Player player) {
+    private boolean checkAttempts(Player player) {
         if (player.getNumberAttempts() >= 10) {
             System.out.println("У " + player.getName() + " закончились попытки");
             return false;
@@ -44,7 +42,7 @@ public class GuessNumber {
         return true;
     }
 
-    public boolean isGuessed(Player player, int targetNumber) {
+    private boolean isGuessed(Player player) {
         int playerNumber = inputNumber(player);
         player.addNumber(playerNumber);
         if (playerNumber == targetNumber) {
@@ -57,18 +55,18 @@ public class GuessNumber {
         return true;
     }
 
-    public int inputNumber(Player player) {
+    private int inputNumber(Player player) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Игрок " + player.getName() + " введите число");
         return scanner.nextInt();
     }
 
-    public void print() {
+    private void print() {
         printInputNumbers(player1);
         printInputNumbers(player2);
     }
 
-    public void printInputNumbers(Player player) {
+    private void printInputNumbers(Player player) {
         int[] copyInputNumbers = player.getInputNumbers();
         System.out.print(player.getName() + " : ");
         for (int inputNumber : copyInputNumbers) {

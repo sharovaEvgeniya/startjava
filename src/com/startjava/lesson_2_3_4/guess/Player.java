@@ -19,14 +19,15 @@ public class Player {
         return Arrays.copyOf(inputNumbers, numberAttempts);
     }
 
-    public int getNumberAttempts() {
-        return numberAttempts;
-    }
-
     public void addNumber(int number) {
         inputNumbers[numberAttempts] = number;
         numberAttempts++;
     }
+
+    public int getNumberAttempts() {
+        return numberAttempts;
+    }
+
 
     public void clear() {
         Arrays.fill(inputNumbers, 0, numberAttempts, 0);
